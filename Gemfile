@@ -23,6 +23,9 @@ gem "jbuilder"
 # gem "kredis"
 
 gem 'haml-rails'
+
+gem "bootstrap-sass"
+gem "sassc-rails"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
