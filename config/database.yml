@@ -12,12 +12,10 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV.fetch('POSTGRES_USER') %>
-  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
+
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -27,8 +25,8 @@ default: &default
 
 development:
   <<: *default
-  username: <%= ENV.fetch('POSTGRES_USER') %>
-  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
+  url: <%= ENV['HEROKU_DB_URL'] %>
+
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
