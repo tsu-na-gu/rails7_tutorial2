@@ -1,5 +1,5 @@
 !!!
-%html
+%html.h-full.bg-gray-50
   %head
     %title=full_title(yield(:title))
     %meta{name: "viewport", content: "width=device-width,initial-scale=1"}
@@ -15,11 +15,14 @@
     %link{rel: "icon", href: "/icon.svg", type: "image/svg+xml"}
     %link{rel: "apple-touch-icon", href: "/icon.png"}
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = render 'layouts/shim'
     = javascript_importmap_tags
 
-  %body
+  %body.h-full
     = render 'layouts/header'
     %div.container
-    = yield
-    = render 'layouts/footer'
+      - flash.each do |message_type, msg|
+        %div{class: "alert alert-#{message_type}" }
+          = msg
+      = yield
+      = render 'layouts/footer'
+      = debug(params) if Rails.env.development?
