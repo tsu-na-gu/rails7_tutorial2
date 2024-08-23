@@ -25,9 +25,11 @@ default: &default
 
 development:
   <<: *default
-  database: rails7_tutorial_development
-  user: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  url: <%= ENV['RENDER_DB_URL'] %>
+  # database: rails7_tutorial_development
+
+#  user: <%#= ENV['POSTGRES_USER'] %>
+#  password: <%#= ENV['POSTGRES_PASSWORD'] %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
