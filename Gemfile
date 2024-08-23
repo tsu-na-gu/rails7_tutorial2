@@ -23,8 +23,10 @@ gem "jbuilder"
 # gem "kredis"
 
 gem 'haml-rails'
-gem "bootstrap-sass"
-gem "sassc-rails"
+gem 'bootstrap-sass'
+gem 'mini_racer'
+
+gem 'sassc-rails'
 
 gem 'dotenv-rails'
 # gem 'redis', '~> 5.2'
@@ -42,8 +44,6 @@ gem 'simple_form'
 gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem "redis", "~> 5.3"
-
-gem "tailwindcss-rails", "~> 2.7"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

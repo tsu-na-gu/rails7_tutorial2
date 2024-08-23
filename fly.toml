@@ -1,16 +1,16 @@
-# fly.toml app configuration file generated for rails7-tutorial-delicate-snow-2081 on 2024-08-22T00:35:49+09:00
+# fly.toml app configuration file generated for rails7-tutorial-dark-lake-116 on 2024-08-23T23:39:01+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'rails7-tutorial-delicate-snow-2081'
+app = 'rails7-tutorial-dark-lake-116'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
 [build]
 
 [deploy]
-  release_command = "./bin/rails db:prepare"
+  release_command = './bin/rails db:prepare'
 
 [http_service]
   internal_port = 3000

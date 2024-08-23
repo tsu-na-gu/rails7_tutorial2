@@ -1,0 +1,14 @@
+- provide(:title, "Log in")
+%h1 Log in
+
+%div.row.g-3
+  %div.col-md-6.col-md-offset-3
+    = simple_form_for :session, url: login_path do |f|
+      = f.input :email, class: 'form-control'
+      = f.input :password, class: 'mb-4 form-control'
+      %div.row.mt-3
+      = f.submit "Log in", class: "btn btn-primary"
+
+      %div.row.mt-6
+        New User?
+        = link_to "Sign up now!", signup_path
