@@ -24,7 +24,6 @@ gem "jbuilder"
 
 gem 'haml-rails'
 gem 'bootstrap-sass'
-gem 'mini_racer'
 
 gem 'sassc-rails'
 
@@ -54,6 +53,7 @@ group :development, :test do
   gem "bcrypt"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+  gem 'mini_racer'
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
