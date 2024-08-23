@@ -6,6 +6,7 @@
     = simple_form_for :session, url: login_path do |f|
       = f.input :email, class: 'form-control'
       = f.input :password, class: 'mb-4 form-control'
+      = f.input :remember_me, as: :boolean, inline_label: "Remember me on this computer"
       %div.row.mt-3
       = f.submit "Log in", class: "btn btn-primary"
 
