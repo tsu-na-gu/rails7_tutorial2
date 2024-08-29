@@ -18,4 +18,23 @@ RSpec.describe 'Users', type: :system do
       end
     end
   end
+
+  describe '#index' do
+    let!(:admin) { FactoryBot.create(:user) }
+    let!(:not_admin) { FactoryBot.create(:archer) }
+
+    it "should display delete link if admin user" do
+      log_in admin
+      visit users_path
+
+      expect(page).to have_link 'delete'
+    end
+
+    it 'should not have link if not admin user' do
+      log_in not_admin
+      visit users_path
+
+      expect(page).to_not have_link 'delete'
+    end
+  end
 end

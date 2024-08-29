@@ -85,6 +85,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    bootstrap-will_paginate (1.0.0)
+      will_paginate
     brakeman (6.2.1)
       racc
     builder (3.3.0)
@@ -119,6 +121,8 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-aarch64-linux-musl)
     ffi (1.17.0-arm-linux-gnu)
@@ -352,6 +356,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.17)
@@ -376,12 +381,15 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap-sass
+  bootstrap-will_paginate (= 1.0.0)
   brakeman
+  bundler
   capybara
   debug
   dockerfile-rails (>= 1.6)
   dotenv-rails
   factory_bot_rails
+  faker
   haml-rails
   importmap-rails
   jbuilder
@@ -398,6 +406,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   web-console
+  will_paginate (= 3.3.1)
 
 BUNDLED WITH
    2.5.9
