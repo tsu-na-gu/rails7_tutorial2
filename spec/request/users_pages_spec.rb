@@ -39,7 +39,7 @@ RSpec.describe "Users", type: :request do
                                        password: "password",
                                        password_confirmation: "password"}}
       user = User.last
-      expect(response).to redirect_to user
+      expect(response).to redirect_to root_path
     end
 
     it 'should show up the flash message' do
@@ -55,7 +55,7 @@ RSpec.describe "Users", type: :request do
                                        email: "sample@example.com",
                                        password: "password",
                                        password_confirmation: "password"}}
-      expect(logged_in?).to be_truthy
+      expect(logged_in?).to be_falsey
     end
   end
 
@@ -199,6 +199,13 @@ RSpec.describe "Users", type: :request do
           expect(response.body).to include "<a href=\"#{user_path(user)}\">"
         end
       end
+
+      it 'should not display not activated users' do
+        not_activated_user = FactoryBot.create(:melony)
+        log_in user
+        get users_path
+        expect(response.body).to_not include not_activated_user.name
+      end
     end
   end
 
@@ -249,15 +256,39 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
-  # describe 'admin user logged in' do
-  #   let!(:user) { FactoryBot.create(:user) }
-  #   let!(:other_user) { FactoryBot.create(:archer) }
-  #
-  #   it 'could delete successfully' do
-  #     log_in user
-  #     expect {
-  #       delete user_path(other_user)
-  #     }.to change(User, :count).by -1
-  #   end
-  # end
+  describe 'POST /users #create' do
+    context 'valid attributes' do
+
+      before do
+        ActionMailer::Base.deliveries.clear
+      end
+
+      it 'should exist one mail' do
+        post users_path,  params: {user: {name: "Sample User",
+                                          email: "sample@example.com",
+                                          password: "password",
+                                          password_confirmation: "password"} }
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+      end
+
+      it 'should not activated when registered' do
+        post users_path,  params: {user: {name: "Sample User",
+                                          email: "sample@example.com",
+                                          password: "password",
+                                                         password_confirmation: "password"} }
+        expect(User.last).to_not be_activated
+      end
+    end
+  end
+
+  describe 'get /users/{id}' do
+    it 'should redirect to root if user is not activated' do
+      user = FactoryBot.create(:user)
+      not_activated_user = FactoryBot.create(:melony)
+
+      log_in user
+      get user_path(not_activated_user)
+      expect(response).to redirect_to root_path
+    end
+  end
 end
