@@ -33,4 +33,33 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.body.encoded).to match(CGI.escape(user.email))
     end
   end
+
+  describe 'password_reset' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:mail) { UserMailer.password_reset(user) }
+
+    before do
+      user.reset_token = User.new_token
+    end
+
+    it 'should be titled Password reset' do
+      expect(mail.subject).to eq('Password reset')
+    end
+
+    it 'should be sent to collect address' do
+      expect(mail.to).to eq([user.email])
+    end
+
+    it 'should be sent from collect address' do
+      expect(mail.from).to eq(['hiroakisatou@outlook.com'])
+    end
+
+    it 'should be included collect reset token' do
+      expect(mail.body.encoded).to match(user.reset_token)
+    end
+
+    it 'should be mail included user\'s mail address' do
+      expect(mail.body.encoded).to match(CGI.escape(user.email))
+    end
+  end
 end

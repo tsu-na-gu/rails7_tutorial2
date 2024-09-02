@@ -42,7 +42,7 @@ gem 'simple_form'
 gem "will_paginate",           "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "redis", "~> 5.3"
-
+gem "slim-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
