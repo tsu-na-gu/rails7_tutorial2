@@ -1,12 +1,13 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
-  before_save   :downcase_email
+  before_save :downcase_email
   before_create :create_activation_digest
   before_validation { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
-            format: { with:URI::MailTo::EMAIL_REGEXP },
+            format: { with: URI::MailTo::EMAIL_REGEXP },
             uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -15,7 +16,8 @@ class User < ApplicationRecord
   # return hash value of argument string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)  end
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   # return random token value
   def User.new_token
@@ -28,6 +30,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
     remember_token
   end
+
   def session_token
     remember_digest || remember
   end
@@ -79,4 +82,7 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 end

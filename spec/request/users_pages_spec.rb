@@ -14,7 +14,6 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "POST /users #create" do
-
     it 'should not register if the value is invalid' do
       expect {
         post users_url, params: { user: { name: '',
@@ -26,35 +25,35 @@ RSpec.describe "Users", type: :request do
 
     it 'should register successfully' do
       expect {
-        post users_url, params: {user: {name: "Sample User",
+        post users_url, params: { user: { name: "Sample User",
                                          email: "sample@example.com",
                                          password: "password",
-                                         password_confirmation: "password"}}
+                                         password_confirmation: "password" } }
       }.to change(User, :count).by(1)
     end
 
     it 'should redirect to users/show page' do
-      post users_url, params: {user: {name: "Sample User",
+      post users_url, params: { user: { name: "Sample User",
                                        email: "sample@example.com",
                                        password: "password",
-                                       password_confirmation: "password"}}
+                                       password_confirmation: "password" } }
       user = User.last
       expect(response).to redirect_to root_path
     end
 
     it 'should show up the flash message' do
-      post users_url, params: {user: {name: "Sample User",
+      post users_url, params: { user: { name: "Sample User",
                                       email: "sample@example.com",
                                       password: "password",
-                                      password_confirmation: "password"}}
+                                      password_confirmation: "password" } }
       expect(flash).to be_any
     end
 
     it "should be login state" do
-      post users_url, params: {user: {name: "Sample User",
+      post users_url, params: { user: { name: "Sample User",
                                        email: "sample@example.com",
                                        password: "password",
-                                       password_confirmation: "password"}}
+                                       password_confirmation: "password" } }
       expect(logged_in?).to be_falsey
     end
   end
@@ -85,10 +84,10 @@ RSpec.describe "Users", type: :request do
       end
 
       it 'could not update' do
-        patch user_path(user), params: { user: {name: '',
+        patch user_path(user), params: { user: { name: '',
                                         email: 'foo@invalid',
                                         password: 'foo',
-                                        password_confirmation: 'bar'}}
+                                        password_confirmation: 'bar' } }
         user.reload
         expect(user.name).to_not eq ''
         expect(user.email).to_not eq ''
@@ -98,19 +97,19 @@ RSpec.describe "Users", type: :request do
 
       it 'should be shown edit page after edit action' do
         get edit_user_path(user)
-        patch user_path(user), params: { user: {name: '',
-                                                email:'foo@invalid',
+        patch user_path(user), params: { user: { name: '',
+                                                email: 'foo@invalid',
                                                 password: 'foo',
-                                                password_confirmation: 'bar'}}
+                                                password_confirmation: 'bar' } }
 
         expect(response.body).to include full_title("User Edit")
       end
 
       it "should be showed 'the form contains 4 errors'" do
-        patch user_path(user), params: { user: {name: '',
-                                                email:'foo@invalid',
+        patch user_path(user), params: { user: { name: '',
+                                                email: 'foo@invalid',
                                                 password: 'foo',
-                                                password_confirmation: 'bar'}}
+                                                password_confirmation: 'bar' } }
         expect(response.body).to include "3 errors"
       end
     end
@@ -216,7 +215,7 @@ RSpec.describe "Users", type: :request do
       log_in user = FactoryBot.create(:archer)
       expect(user).to_not be_admin
 
-      patch user_path(user), params: { user: {password: 'password',
+      patch user_path(user), params: { user: { password: 'password',
                                               password_confirmation: 'password',
                                               admin: true } }
       user.reload
@@ -258,24 +257,23 @@ RSpec.describe "Users", type: :request do
   end
   describe 'POST /users #create' do
     context 'valid attributes' do
-
       before do
         ActionMailer::Base.deliveries.clear
       end
 
       it 'should exist one mail' do
-        post users_path,  params: {user: {name: "Sample User",
+        post users_path,  params: { user: { name: "Sample User",
                                           email: "sample@example.com",
                                           password: "password",
-                                          password_confirmation: "password"} }
+                                          password_confirmation: "password" } }
         expect(ActionMailer::Base.deliveries.size).to eq 1
       end
 
       it 'should not activated when registered' do
-        post users_path,  params: {user: {name: "Sample User",
+        post users_path,  params: { user: { name: "Sample User",
                                           email: "sample@example.com",
                                           password: "password",
-                                                         password_confirmation: "password"} }
+                                                         password_confirmation: "password" } }
         expect(User.last).to_not be_activated
       end
     end

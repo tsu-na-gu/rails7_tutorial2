@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
-
-
   describe "GET /login" do
     it "returns http success" do
       get login_path
@@ -40,4 +38,3 @@ RSpec.describe "Sessions", type: :request do
       end
   end
 end
-

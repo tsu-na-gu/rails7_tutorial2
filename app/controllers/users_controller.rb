@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :create, :show]
-  before_action :correct_user,   except: [:index, :new, :create, :show]
-  before_action :admin_user,     only: :destroy
+  before_action :correct_user, except: [:index, :new, :create, :show]
+  before_action :admin_user, only: :destroy
 
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
   end
+
   def new
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_url unless @user.activated?
+    @microposts = @user.microposts.paginate(page: params[:page])
+    redirect_to root_path unless @user.activated
   end
 
   def create
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   def destroy
     User.find(params[:user]).destroy
     flash[:success] = "User deleted"
@@ -44,9 +47,8 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
@@ -54,18 +56,11 @@ class UsersController < ApplicationController
   # before filter
 
   # confirm that user is logged in
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url, status: :see_other
-    end
-  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url, status: :see_other) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url, status: :see_other) unless current_user?(@user)
+  end
 
   def admin_user
     redirect_to(root_url, status: :see_other) unless current_user.admin?

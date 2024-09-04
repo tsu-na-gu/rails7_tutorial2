@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec::describe "Static Pages", type: :request do
-
+RSpec.describe "Static Pages", type: :request do
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
   describe 'root' do

@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom:  30px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -75,7 +75,6 @@ p {
 }
 
 
-
 /* miscellaneous */
 
 .debug_dump {
@@ -89,19 +88,23 @@ p {
 aside section.user_info {
   margin-top: 20px;
 }
+
 aside section {
   padding: 10px 0;
   margin-top: 20px;
 }
+
 aside section:first-child {
   border: 0;
   padding-top: 0;
 }
+
 aside span {
   display: block;
   margin-bottom: 3px;
   line-height: 1;
 }
+
 aside h1 {
   font-size: 1.4em;
   text-align: left;
@@ -162,6 +165,7 @@ aside h1 {
     }
   }
 }
+
 /* form */
 
 .form-container {
@@ -175,16 +179,20 @@ aside h1 {
 #error_explanation {
   color: red;
 }
+
 #error_explanation ul {
   color: red;
   margin: 0 0 30px 0;
 }
 
 
-.form-control { color: red; }
+.form-control {
+  color: red;
+}
 
 .checkbox {
   margin-bottom: 10px;
+
   span {
     margin-left: 20px;
     font-weight: normal;
@@ -200,10 +208,65 @@ aside h1 {
 .users {
   list-style: none;
   margin: 0;
+
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid #aaaaaa;
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #c8c8c8;
+  }
+
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+
+  .content {
+    display: block;
+    margin-left: 60px;
+
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+
+  .timestamp {
+    color: #aaaaaa;
+    display: block;
+    margin-left: 60px;
+  }
+
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.image {
+  margin-top: 110px;
+
+  input {
+    border: 0;
   }
 }
 

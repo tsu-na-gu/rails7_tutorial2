@@ -41,7 +41,7 @@ RSpec.describe 'Session', type: :system do
     it 'could be possible to logout' do
       user = FactoryBot.create(:user)
       post login_path, params: { session: { email: user.email,
-                                            password: user.password}}
+                                            password: user.password } }
       expect(logged_in?).to be_truthy
 
       delete logout_path

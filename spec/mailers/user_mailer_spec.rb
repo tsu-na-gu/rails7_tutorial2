@@ -14,11 +14,11 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'should send to correct address' do
-      expect(mail.to).to eq([user.email])
+      expect(mail.to).to eq([ user.email ])
     end
 
     it 'should from correct address' do
-      expect(mail.from).to eq(['hiroakisatou@outlook.com'])
+      expect(mail.from).to eq([ 'hiroakisatou@outlook.com' ])
     end
 
     it 'should include user name' do
@@ -47,11 +47,11 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'should be sent to collect address' do
-      expect(mail.to).to eq([user.email])
+      expect(mail.to).to eq([ user.email ])
     end
 
     it 'should be sent from collect address' do
-      expect(mail.from).to eq(['hiroakisatou@outlook.com'])
+      expect(mail.from).to eq([ 'hiroakisatou@outlook.com' ])
     end
 
     it 'should be included collect reset token' do

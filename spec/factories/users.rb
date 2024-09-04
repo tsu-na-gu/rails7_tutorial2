@@ -10,7 +10,7 @@ FactoryBot.define do
   end
   factory :archer, class: User do
     name { "Sterling Archer" }
-    email { "duchess@example.com"}
+    email { "duchess@example.com" }
     password { "password" }
     password_confirmation { "password" }
     activated { true }
@@ -36,7 +36,7 @@ FactoryBot.define do
   factory :continuous_user, class: User do
     sequence(:name) { |n| "User #{n}" }
     sequence(:email) { |n| "user-#{n}@example.com" }
-    password {'password'}
+    password { 'password' }
     password_confirmation { 'password' }
     activated { true }
     activated_at { Time.zone.now }

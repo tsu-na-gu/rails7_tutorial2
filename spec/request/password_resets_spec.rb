@@ -22,7 +22,7 @@ RSpec.describe "PasswordResets", type: :request do
 
     context 'in case of valid email address' do
       it 'should be changed reset_digest' do
-        post password_resets_path params: { password_reset: {email: user.email } }
+        post password_resets_path params: { password_reset: { email: user.email } }
         expect(user.reset_digest).to_not eq user.reload.reset_digest
       end
 
@@ -37,9 +37,6 @@ RSpec.describe "PasswordResets", type: :request do
         expect(flash).to_not be_empty
       end
     end
-
-
-
   end
 
   describe '#edit' do
@@ -99,22 +96,22 @@ RSpec.describe "PasswordResets", type: :request do
     context 'in case of valid password' do
       it 'should get log in state' do
         patch password_reset_path(@user.reset_token), params: { email: @user.email,
-                                                            user: {password: 'foobaz',
-                                                                   password_confirmation: 'foobaz'} }
+                                                            user: { password: 'foobaz',
+                                                                   password_confirmation: 'foobaz' } }
         expect(logged_in?).to be_truthy
       end
 
       it 'should contain flash message' do
         patch password_reset_path(@user.reset_token), params: { email: @user.email,
-                                                                user: {password: 'foobaz',
-                                                                       password_confirmation: 'foobaz'} }
+                                                                user: { password: 'foobaz',
+                                                                       password_confirmation: 'foobaz' } }
         expect(response).to redirect_to @user
       end
 
       it 'should redirect to user\'s profile page' do
         patch password_reset_path(@user.reset_token), params: { email: @user.email,
-                                                                user: {password: 'foobaz',
-                                                                       password_confirmation: 'foobaz'} }
+                                                                user: { password: 'foobaz',
+                                                                       password_confirmation: 'foobaz' } }
         expect(response).to redirect_to @user
       end
 
@@ -140,5 +137,4 @@ RSpec.describe "PasswordResets", type: :request do
       expect(response.body).to include "<div id='error_explanation'>"
     end
   end
-
 end

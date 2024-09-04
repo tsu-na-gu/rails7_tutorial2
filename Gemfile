@@ -18,17 +18,19 @@ gem "stimulus-rails"
 gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
-gem 'bundler'
+gem "bundler"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
-gem 'haml-rails'
-gem 'bootstrap-sass'
+gem "haml-rails"
+gem "bootstrap-sass"
+gem "ostruct"
+gem 'active_storage_validations'
+gem "sassc-rails"
+gem "image_processing", "1.12.2"
 
-gem 'sassc-rails'
-
-gem 'dotenv-rails'
+gem "dotenv-rails"
 # gem 'redis', '~> 5.2'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -37,9 +39,9 @@ gem 'dotenv-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-gem 'bcrypt'
-gem 'simple_form'
-gem "will_paginate",           "3.3.1"
+gem "bcrypt"
+gem "simple_form"
+gem "will_paginate", "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "redis", "~> 5.3"
 gem "slim-rails"
@@ -48,28 +50,23 @@ gem "slim-rails"
 
 group :development, :test do
   gem "faker"
-  gem "dockerfile-rails", ">= 1.6", :group => :development
+  gem "dockerfile-rails", ">= 1.6", group: :development
 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-  gem 'mini_racer'
+  gem "mini_racer"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'capybara'
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "capybara"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
-
-
-
-
-
