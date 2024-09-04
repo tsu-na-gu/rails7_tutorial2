@@ -41,7 +41,7 @@ gem "dotenv-rails"
 gem "bootsnap", require: false
 gem "bcrypt"
 gem "simple_form"
-gem "will_paginate", "3.3.1"
+gem "will_paginate", "4.0.1"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "redis", "~> 5.3"
 gem "slim-rails"
