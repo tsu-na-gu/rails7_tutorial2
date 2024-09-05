@@ -28,7 +28,7 @@ gem "bootstrap-sass"
 gem "ostruct"
 gem 'active_storage_validations'
 gem "sassc-rails"
-gem "image_processing", "1.12.2"
+gem "image_processing", "1.13.0"
 
 gem "dotenv-rails"
 # gem 'redis', '~> 5.2'
